@@ -1,0 +1,287 @@
+
+<header class="site__header " [ngClass]="{'no__login__header': userRole==-1}">
+	<div class="row hdr__top">
+		<div class="logo" *ngIf="userRole==-1">
+			<a href="#"><img src="/assets/images/newOne.jpg" alt="logo" /></a>
+		</div>
+		<!-- <div class="logo" *ngIf="userRole === userData.SUPER_ADMIN">
+			<a href="dashboard"><img src="/assets/images/logo.png" alt="logo" /></a>
+		</div>
+		<div class="logo" *ngIf="userRole === userData.MERCHANT">
+			<a href="merchant-dashboard"><img src="/assets/images/logo.png" alt="logo" /></a>
+		</div> -->
+		<!-- <div class="hfr__top__left hide__mobileview">
+			<ul *ngIf="userRole === userData.SUPER_ADMIN">
+				<li class="dashboard_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/dashboard" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.DASHBOARD |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="merchants_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/merchant" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.MERCHANTS |translate}}</a></li>
+				<li class="stores_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/admin-store" routerLinkActive="active" [class.storeActive]="isStoreMenuActive"><i></i>{{translations.GLOBAL.KEYS.STORES |translate}}</a></li>
+				<li class="coupons_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/coupon" routerLinkActive="active" [class.couponActive]="isCouponMenuActive"><i></i>{{translations.GLOBAL.KEYS.COUPONS |translate}}</a></li>
+			</ul>
+		</div> -->
+		<!-- <div class="showmenu__icon" *ngIf="userRole==-1">
+			<a id="menu" href="javascript:void(0)"><img src="/assets/images/svg_icons/mobile_menu.svg" alt="icon" /></a>
+		</div> -->
+		<!-- <div class="hdr__top__right" *ngIf="userRole=== userData.SUPER_ADMIN || userRole === userData.MERCHANT">
+			<ul>
+				<li class="top__search__box dropdown">
+					<a id="searchMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/images/svg_icons/header-search-gray-icon.svg" alt="icon" /></a>
+					<div class="dropdown-menu open__search__box dropdown-outer" aria-labelledby="searchMenuButton">
+						<input type="text" placeholder="Search here..." />
+						<button><img src="/assets/images/svg_icons/search.svg" /></button>
+					</div>
+				</li>
+				<li class="mail__search__box dropdown" #messageDropdown>
+					<a id="message" class="noti-count-show">
+						<span *ngIf="unreadMessageCounts > systemConstants.ZERO_DEFAULT" >{{unreadMessageCounts}}</span>
+						<i [class.active]="isMessageMenuActive || notify" class="hdr-message-icon" (click)="getMessageCountAndList()"></i>
+					</a>
+					<div class="dropdown-menu open__notification__box dropdown-outer show" *ngIf="notify">
+						<div class="notification-dropdown-in" *ngIf="sAttributes.messageItems">
+							<ul class="new-message-drop-down">
+								<li *ngIf="sAttributes.messageItems.length == 0">{{translations.GLOBAL.KEYS.NO_NEW_MESSAGES | translate}}</li>
+								<li *ngFor="let notifyData of sAttributes.messageItems; let i = index" [class.d-none]="i >= 3">
+									<a href="javascript:void(0)">
+										<div class="noti-img">
+											<app-cdn-image-loader
+											[defaultImage]="'/assets/images/wellbux-default-img/default-merchant.svg'"
+											[src]="notifyData.counterUserData.profileData.image"
+											[height]= "80"
+											[width]= "80">
+										  </app-cdn-image-loader>
+											
+										</div>
+										<div class="noti-content">
+											<h3 class="clearfix">{{notifyData.counterUserData.username}} <strong>{{notifyData.createdDate | dateToMinutes}}</strong></h3>
+											<p>{{notifyData.counterMessage | truncate:['60', '...']}}</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+							<div class="view-all" *ngIf="sAttributes.messageItems.length > 0">
+								<a href="javascript:void(0)" routerLink="/message" (click)="notify = !notify">{{translations.GLOBAL.KEYS.VIEW_ALL |translate}}</a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="notification__search__box dropdown" (click)="getUnreadNotificationCountAndList()" #notificationDropdown>
+					<a class="noti-count-show" href="javascript:void(0)" (click)="inotify = !inotify">
+						<span *ngIf="unreadNotificationCounts > 0" >{{unreadNotificationCounts}}</span>
+						<i [class.active]="isNotificationMenuActive || inotify" class="hdr-notification-icon"></i>
+					</a>
+					<div class="dropdown-menu open__notification__box dropdown-outer" *ngIf="inotify">
+						<div class="notification-dropdown-in">
+							<div class="hdr__notification">
+								<div class="hdr_noti_top">
+									<strong>{{translations.GLOBAL.KEYS.NOTIFICATIONS |translate}}</strong>
+									<a routerLink="notification" (click)="inotify = !inotify">{{translations.GLOBAL.KEYS.VIEW_ALL |translate}}</a>
+								</div>
+								<div class="hdr_noti_list">
+									<perfect-scrollbar class="notification-scrollbar-custom-height" [config]="{ suppressScrollX: true }">
+									<div *ngFor="let notificationData of notificationList; let i = index">
+										
+										<div class="hdr_noti_row" [ngClass]="{'new_noti': notificationData.status === showNotificationStatus}" *ngIf="notificationData.message"  (click)="updateNotification(notificationData, activated)">
+											<div class="hdr_noti_user_img">
+												<app-cdn-image-loader
+												[defaultImage]="'/assets/images/wellbux-default-img/default-user.svg'"
+												[isCdnImage]="notificationData.isAnnouncement ? false : isImageCdnByImageType(notificationData.media.imageType)"
+												[src]="notificationData.isAnnouncement ? '/assets/images/wellbux-default-img/default-announcement.svg' : getImageSrcByImageType(notificationData.media)"
+												[height]="80"
+												[width]="80">
+											    </app-cdn-image-loader>
+										    </div>
+											<div class="hdr_noti_user_txt">
+												<p [innerHTML]="notificationData.message"></p>
+												<span>{{notificationData.createdDate | dateToMinutes}}</span>
+											</div>
+											<div class="hdr_noti_img" hidden>
+												<img src="/assets/images/wellbux-default-img/default-user.svg" alt="" />
+											</div>
+											
+										</div>
+									</div>
+									</perfect-scrollbar>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="nav__icon">
+					<a id="menu" (click)="mobRes()" href="javascript:void(0)">
+						<img src="/assets/images/svg_icons/mobile_menu.svg" alt="icon" />
+					</a>
+				</li>
+				<li class="user__top_info dropdown" dropdown #profileInfoDropdown>
+					<a href="javascript:void(0)" (click)="profileInfoShow = !profileInfoShow">
+					<div class="dropdown-toggle">
+						   <span *ngIf="loginUser && loginUser.profileData && !userProfileImgage; let isCdnImage = true" class="pImg">
+
+							<app-cdn-image-loader
+								[defaultImage]="'/assets/images/wellbux-default-img/default-merchant.svg'"
+								[isCdnImage]="isImageCdnByImageType(loginUser.profileData.imageType)"
+								[src]="getImageSrcByImageType(loginUser.profileData)"
+								[height]="200"
+								[width]="200">
+						    </app-cdn-image-loader>
+                            </span>
+							<span *ngIf="loginUser && loginUser.profileData && userProfileImgage; let isCdnImage = true" class="pUpdateImg">
+                              	<app-cdn-image-loader
+									[defaultImage]="'/assets/images/wellbux-default-img/default-merchant.svg'"
+									[src]="userProfileImgage"
+									[height]="200"
+									[width]="200">
+								</app-cdn-image-loader>
+                            </span> {{loginUser.fname}}
+						</div>
+					</a>
+					<div class="user__top_in" *ngIf="profileInfoShow">
+						<div class="user__top_box">
+							<a href="javascript:void(0)" (click)="hideDropDownList()" routerLink="/edit-profile">{{translations.GLOBAL.KEYS.EDIT_PROFILE |translate}}</a>
+							<a (click)="logout()" href="javascript:void(0)">{{translations.GLOBAL.KEYS.LOGOUT |translate}}</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div> -->
+		<div #target class="hdr__top__right" id="clickmenu" *ngIf="userRole==-1">
+			<div class="closemenu__icon" *ngIf="userRole==-1">
+				<a id="menu" href="javascript:void(0)"><img src="/assets/images/svg_icons/nav-close-icon.svg" alt="icon" /></a>
+			</div>
+            <div class="inner-mobile-nav-bg">
+				<ul style="border-bottom: none;" >
+					<li class="section-item" >
+						<span *ngFor="let sectionDetailsList of sectionDetailsList | keyvalue; let index = index;">
+							<a pageScroll href="javascript:void(0)"   [ngClass]="{'active': this.sectionIndex === index}">
+								{{sectionDetailsList.value.label}}
+							</a>
+
+						</span>
+					</li>
+					<li><a href="javascript:void(0)"> Contact</a> </li>
+					<li><a  href="javascript:void(0)" routerLink="/signup" routerLinkActive="active">Signup </a> </li>
+					<li><a  href="javascript:void(0)"  (click)="openModal(addTeamMember,false)" routerLinkActive="active"> Login</a> </li>
+				</ul>
+			</div>
+			
+			
+		</div>
+	</div>
+	<!-- <div class="header-nav" id="clickmenu" *ngIf="userRole === userData.SUPER_ADMIN || userRole === userData.MERCHANT" [ngClass]="{'menu-slide': isMobileNavVisible}">
+		<div class="closemenu__icon">
+			<a id="menu" (click)="mobRes()" href="javascript:void(0)"><img src="/assets/images/svg_icons/nav-close-icon.svg" alt="icon" /></a>
+		</div>
+		<div class="inner-mobile-nav-bg">
+			<div class="mob__user__top_info dropdown" dropdown>
+				<div id="dropdownMenuButton" dropdownToggle class="dropdown-toggle" aria-controls="dropdown-basic">
+					<a href="javascript:void(0)" (click)="mobRes()">
+						<span *ngIf="loginUser && loginUser.profileData && !userProfileImgage; let isCdnImage =true" class="pImg">
+							<app-cdn-image-loader
+								[defaultImage]="'/assets/images/wellbux-default-img/default-merchant.svg'"
+								[isCdnImage]="isImageCdnByImageType(loginUser.profileData.imageType)"
+								[src]="getImageSrcByImageType(loginUser.profileData)"
+								[height]="200"
+								[width]="200">
+							</app-cdn-image-loader>
+						</span>
+						<span *ngIf="loginUser && loginUser.profileData && userProfileImgage" class="pUpdateImg">
+	
+							<app-cdn-image-loader
+								[defaultImage]="'/assets/images/wellbux-default-img/default-merchant.svg'"
+								[src]="userProfileImgage"
+								[height]="200"
+								[width]="200">
+							</app-cdn-image-loader>
+						</span> {{loginUser.fname}}
+					</a>
+				</div>
+				<div class="profile__mobile dropdown-menu" *dropdownMenu>
+					<a (click)="mobRes()" href="javascript:void(0)" routerLink="/edit-profile">{{translations.GLOBAL.KEYS.EDIT_PROFILE | translate}}</a>
+					<a (click)="logout()" href="javascript:void(0)">{{translations.GLOBAL.KEYS.LOGOUT |translate}}</a>
+				</div>
+			</div>
+			
+			<ul class="show__mobileview" >
+			
+				<li *ngIf="userRole === userData.MERCHANT" class="dashboard_nav_icon"><a (click)="mobRes()" routerLink="/merchant-dashboard" routerLinkActive="active" href="javascript:void(0)"><i></i>{{translations.GLOBAL.KEYS.DASHBOARD | translate}}</a></li>
+				<li *ngIf="userRole === userData.MERCHANT" class="stores_nav_icon"><a (click)="mobRes()" href="javascript:void(0)" routerLink="/admin-store" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.MY_STORE |translate}}</a></li>
+				<li *ngIf="userRole === userData.MERCHANT" class="payments_nav_icon"><a (click)="mobRes()" href="javascript:void(0)" routerLink="/merchant-payment" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PAYMENT | translate}}</a></li>
+				<li *ngIf="userRole === userData.MERCHANT" class="coupons_nav_icon"><a (click)="mobRes()" href="javascript:void(0)" routerLink="/coupon" routerLinkActive="active" [class.active]="isCouponMenuActive"><i></i>{{translations.GLOBAL.KEYS.COUPONS |translate}}</a></li>
+				<li *ngIf="userRole === userData.MERCHANT" class="specialsales_nav_icon"><a (click)="mobRes()" href="javascript:void(0)" routerLink="/participated-in-sale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PARTICIPATE_IN_SALES | translate}}</a></li>
+	
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="dashboard_nav_icon "><a (click)="mobRes()" routerLink="/dashboard" routerLinkActive="active" href="javascript:void(0)"><i></i>{{translations.GLOBAL.KEYS.DASHBOARD | translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="merchants_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/merchant" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.MERCHANTS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="stores_nav_icon"><a (click)="mobRes()" routerLink="/admin-store" routerLinkActive="active" href="javascript:void(0)" [class.active]="isStoreMenuActive"><i></i>{{translations.GLOBAL.KEYS.STORES |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="coupons_nav_icon "><a (click)="mobRes()" routerLink="/coupon" routerLinkActive="active" href="javascript:void(0)" [class.couponActive]="isCouponMenuActive"><i></i>{{translations.GLOBAL.KEYS.COUPONS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="users_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/user" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.USERS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="communities_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/admin-community" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.COMMUNITIES |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="announcements_nav_icon" ><a href="javascript:void(0)" (click)="mobRes()" routerLink="/announcement" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.ANNOUNCEMENTS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="programs_nav_icon"><a class="main-drop-item" href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-program" routerLinkActive="active" [class.active]="isProgramsMenuActive"><i></i>{{translations.GLOBAL.KEYS.PROGRAMS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="challenges_nav_icon"><a class="sub-drop-item" href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-program/challenges" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.CHALLENGES |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="achievement_nav_icon"><a class="sub-drop-item" href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-program/achievements" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.ACHIEVEMENTS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="locale_nav_icon" [class.active]="isLocaleMenuActive"><a class="main-drop-item" href="javascript:void(0)" (click)="mobRes()" routerLink="/locale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.LOCALE |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="customfield_nav_icon"><a class="sub-drop-item" href="javascript:void(0)" (click)="mobRes()" routerLink="/custom-field/" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.CUSTOM_FIELDS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="teams_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/team" routerLinkActive="active"><i></i> {{translations.GLOBAL.KEYS.TEAMS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="payments_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/admin-payment" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PAYMENT |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="specialsales_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/special-sale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.SPECIAL_SALES |translate}}</a></li>
+	
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="reports_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/report-dashboard" routerLinkActive="active" [class.active]="isReportMenuActive"><i></i>{{translations.GLOBAL.KEYS.REPORTS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="referral_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-referral" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.REFERRAL |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="notification_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-notification" routerLinkActive="active" ><i></i>{{translations.GLOBAL.KEYS.NOTIFICATIONS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="tracker_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-tracker" routerLinkActive="active" [class.active]="isTrackerMenuActive"><i></i>{{translations.GLOBAL.KEYS.TRACKERS |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="unit_nav_icon" [class.active]="isUnitMenuActive"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-unit" routerLinkActive="active" ><i></i> {{translations.GOAL_ADD_EDIT_FORM.UNIT |translate}} </a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="activities_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-activities" routerLinkActive="active"><i></i> {{translations.GLOBAL.KEYS.ACTIVITIES |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="food_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-food" routerLinkActive="active"><i></i> {{translations.GLOBAL.KEYS.FOOD |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="report-abuse_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-report-abuse" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.REPORTED_ABUSE |translate}}</a></li>
+				<li *ngIf="userRole === userData.SUPER_ADMIN" class="post_nav_icon"><a href="javascript:void(0)" (click)="mobRes()" routerLink="/manage-post" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.POST |translate}}</a></li>
+				
+			</ul>
+		</div>
+		
+		<ul id="teleporter">
+			
+			<li *ngIf="userRole === userData.MERCHANT" class="dashboard_nav_icon "><a (click)="mobRes()" routerLink="/merchant-dashboard" routerLinkActive="active" href="javascript:void(0)"><i></i>{{translations.GLOBAL.KEYS.DASHBOARD | translate}}</a></li>
+			<li *ngIf="userRole === userData.MERCHANT" class="stores_nav_icon"><a href="javascript:void(0)" routerLink="/admin-store" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.MY_STORE |translate}}</a></li>
+			<li *ngIf="userRole === userData.MERCHANT" class="payments_nav_icon"><a href="javascript:void(0)" routerLink="/merchant-payment" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PAYMENT |translate}}</a></li>
+			<li *ngIf="userRole === userData.MERCHANT" class="coupons_nav_icon"><a href="javascript:void(0)" routerLink="/coupon" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.COUPONS |translate}}</a></li>
+			<li *ngIf="userRole === userData.MERCHANT" class="specialsales_nav_icon"><a href="javascript:void(0)" routerLink="/participated-in-sale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PARTICIPATE_IN_SALES | translate}}</a></li>
+		
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="users_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/user" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.USERS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="communities_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/admin-community" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.COMMUNITIES |translate}}</a></li>
+			<li class="announcements_nav_icon" *ngIf="userRole === userData.SUPER_ADMIN" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/announcement" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.ANNOUNCEMENTS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="programs_nav_icon dropdownmenu" (click)="hideDropDownList()"> <a class="arrow" href="javascript:void(0)" routerLink="/manage-program" routerLinkActive="active"  [class.active]="isProgramsMenuActive"><i></i>{{translations.GLOBAL.KEYS.PROGRAMS |translate}}</a>
+				<div class="show-dropdownmenu">
+					<ul>
+						<li *ngIf="userRole === userData.SUPER_ADMIN" class="challenges_nav_icon" (click)="hideDropDownList()"> <a href="javascript:void(0)" routerLink="/manage-program/challenges" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.CHALLENGES |translate}}</a> </li>
+						<li *ngIf="userRole === userData.SUPER_ADMIN" class="achievement_nav_icon" (click)="hideDropDownList()"> <a href="javascript:void(0)" routerLink="/manage-program/achievements" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.ACHIEVEMENTS |translate}}</a> </li>
+					</ul>
+				</div>
+			</li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="locale_nav_icon dropdownmenu" (click)="hideDropDownList()" [class.active]="isLocaleMenuActive"> <a class="arrow" href="javascript:void(0)" routerLink="/locale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.LOCALE |translate}}</a>
+				<div class="show-dropdownmenu">
+					<ul>
+						<li *ngIf="userRole === userData.SUPER_ADMIN" class="customfield_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/custom-field/" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.CUSTOM_FIELDS |translate}}</a></li>
+					</ul>
+				</div>
+			</li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="teams_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/team" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.TEAMS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="payments_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/admin-payment" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.PAYMENT |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="specialsales_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/special-sale" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.SPECIAL_SALES |translate}}</a></li>
+
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="reports_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/report-dashboard" routerLinkActive="active" [class.active]="isReportMenuActive"><i></i>{{translations.GLOBAL.KEYS.REPORTS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="referral_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/manage-referral" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.REFERRAL |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="notification_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/manage-notification" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.NOTIFICATIONS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="tracker_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/manage-tracker" routerLinkActive="active" [class.active]="isTrackerMenuActive"><i></i>{{translations.GLOBAL.KEYS.TRACKERS |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="activities_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)" routerLink="/manage-activities" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.ACTIVITIES |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="unit_nav_icon" (click)="hideDropDownList()" [class.active]="isUnitMenuActive"><a href="javascript:void(0)" routerLink="/manage-unit" routerLinkActive="active" ><i></i>{{translations.GOAL_ADD_EDIT_FORM.UNIT |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="food_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)"  routerLink="/manage-food" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.FOOD |translate}}</a></li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="report-abuse_nav_icon" (click)="hideDropDownList()"> <a href="javascript:void(0)" routerLink="/manage-report-abuse" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.REPORTED_ABUSE |translate}}</a> </li>
+			<li *ngIf="userRole === userData.SUPER_ADMIN" class="post_nav_icon" (click)="hideDropDownList()"><a href="javascript:void(0)"  routerLink="/manage-post" routerLinkActive="active"><i></i>{{translations.GLOBAL.KEYS.POST |translate}}</a></li>
+		
+
+		</ul>
+
+		<div class="hdr__added__menu" #dropdownMenu>
+			<div class="hdr__added__menu__top d-none" id="addmenu" (click)="showHideMoreMenu = !showHideMoreMenu"><i class="fas fa-ellipsis-h"></i><span>{{translations.GLOBAL.KEYS.MORE |translate}} <b class="fas fa-chevron-down"></b></span> </div>
+			<ul id="receiver" [class.showIcon]="showHideMoreMenu" (click)="handleItemClick($event)"></ul>
+		</div>
+	</div> -->
+</header>

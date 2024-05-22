@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="19px" viewBox="0 0 50 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Mobile</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Change-the-tags,-it-should-be-like-this" transform="translate(-1160.000000, -354.000000)">
+            <g id="Mobile" transform="translate(1160.000000, 354.000000)">
+                <rect id="Rectangle" stroke="#84B106" fill="#FFFFFF" x="0.5" y="0.5" width="49" height="18" rx="2"></rect>
+                <text font-family="Quicksand-Light_Medium, Quicksand" font-size="9" font-weight="400" fill="#84B106">
+                    <tspan x="17" y="13">Mobile</tspan>
+                </text>
+                <path d="M10.7946429,4 L6.08035714,4 C5.48480964,4.00273763 5.00268874,4.49362436 5,5.1 L5,13.9 C5.00268874,14.5063756 5.48480964,14.9972624 6.08035714,15 L10.7946429,15 C11.3901904,14.9972624 11.8723113,14.5063756 11.875,13.9 L11.875,5.1 C11.8723113,4.49362436 11.3901904,4.00273763 10.7946429,4 L10.7946429,4 Z M11.2857143,13.9 C11.2857143,14.1761424 11.0658541,14.4 10.7946429,14.4 L6.08035714,14.4 C5.80914588,14.4 5.58928571,14.1761424 5.58928571,13.9 L5.58928571,5.1 C5.58928571,4.82385763 5.80914588,4.6 6.08035714,4.6 L10.7946429,4.6 C11.0658541,4.6 11.2857143,4.82385763 11.2857143,5.1 L11.2857143,13.9 Z M10.3035714,5.9 C10.3035714,6.06568542 10.1716553,6.2 10.0089286,6.2 L6.86607143,6.2 C6.70334467,6.2 6.57142857,6.06568542 6.57142857,5.9 C6.57142857,5.73431458 6.70334467,5.6 6.86607143,5.6 L10.0089286,5.6 C10.1716553,5.6 10.3035714,5.73431458 10.3035714,5.9 L10.3035714,5.9 Z" id="Shape" fill="#84B106" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

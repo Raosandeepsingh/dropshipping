@@ -1,0 +1,59 @@
+<ng-template #showLoginPop>
+    <button type="button" class="pop_close" (click)="hideAddTeamsToChallengeFormAndResetValues()"><img src="assets/images/svg_icons/cross.svg" alt="" /></button>
+
+    <div class="mid_container no-padding" *ngIf="!isLogin">
+        <div class="sm_container">
+            <div class="login__page">
+             
+               
+               
+                    <div class="login">
+                        <h2>Sign In</h2>
+                        <form [formGroup]="loginForm" >
+                        <div class="form">
+                            <div class="login__input">
+                                <input type="text" formControlName="username">
+                            </div>
+                            <div class="login__input">
+                                <input type="password" formControlName="password"  />
+                            </div>
+                            <div class="remember form-check">
+                                <div class="remember-me ">
+                                    <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" checked>
+                                    <label for="checkboxG1" class="css-label"> Remember-me</label>
+                                </div>
+                              <div class="forget-link"><a href="javascript:void(0)">Forget password</a></div>  
+                                <div class="clear"></div>
+                            </div>
+                            <div class="login__submit">
+                                <button> Sign In</button>
+                            </div>
+                            <p class="btm_txt"> Don't Have An Account <a href="javascript:void(0)" routerLink="/signup">Sign In</a></p>
+                        </div>
+                    </form>
+                    </div>
+                
+
+
+
+               
+             
+            </div>
+        </div>
+      </div>
+    </ng-template>
+      <!-------------Mid End----------------->
+
+      <ng-template #generateLinkTab>
+        <div>
+          <div class="generateVerificationLinkTab">
+            <div>
+                Verification Link
+            </div>
+            <div>
+              <button class="gray-btn_outline"  data-dismiss="modal">No</button> &nbsp;
+              <button class="orange-btn_outline"  data-dismiss="modal">Yes</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>

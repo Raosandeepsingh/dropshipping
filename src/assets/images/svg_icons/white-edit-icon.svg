@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>icon/action/edit</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-Coupons-list" transform="translate(-1149.000000, -339.000000)">
+            <g id="down-arrow" transform="translate(1051.000000, 271.000000)">
+                <g id="icon/action/edit" transform="translate(97.000000, 67.000000)">
+                    <rect id="Rectangle-Copy-7" x="0" y="0" width="12" height="12"></rect>
+                    <path d="M7.21824699,2.66887117 L9.2524732,4.71304064 L4.10328493,9.88744613 L2.07021205,7.84327666 L7.21824699,2.66887117 Z M10.7960574,2.17586436 L9.88887082,1.26423497 C9.53827451,0.911921678 8.96897856,0.911921678 8.6171911,1.26423497 L7.74819704,2.13748477 L9.78242325,4.18167323 L10.7960574,3.16307496 C11.0679809,2.88980084 11.0679809,2.44911948 10.7960574,2.17586436 Z M1.00566077,10.7165214 C0.968640464,10.8839476 1.11906619,11.03397 1.28569539,10.9932535 L3.55249913,10.4409483 L1.51942626,8.39677883 L1.00566077,10.7165214 Z" id="Shape" fill="#fff" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

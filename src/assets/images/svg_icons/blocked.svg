@@ -1,0 +1,10 @@
+<svg id="Symbols" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75">
+  <g id="merchant-item">
+    <g id="status_approved" data-name="status/approved">
+      <rect id="Rectangle" width="75" height="75" fill="none"/>
+      <g id="checked">
+        <path id="Shape" d="M37.493,0A37.493,37.493,0,1,0,74.986,37.493,37.494,37.494,0,0,0,37.493,0ZM30.615,56.753,14.106,40.244l5.5-5.5L30.615,45.747,55.377,20.985l5.5,5.5Z" fill="#ababab"/>
+      </g>
+    </g>
+  </g>
+</svg>

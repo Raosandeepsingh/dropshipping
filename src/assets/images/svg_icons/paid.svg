@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>status/approved</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="merchant-item" transform="translate(-828.000000, -66.000000)">
+            <g id="status/approved" transform="translate(828.000000, 66.000000)">
+                <rect id="Rectangle" x="0" y="0" width="18" height="18"></rect>
+                <g id="checked" stroke-width="1" fill-rule="evenodd" fill="#6AC259">
+                    <path d="M8.99296019,0 C4.02651991,0 0,4.02635129 0,8.99296019 C0,13.9595691 4.02651991,17.9859204 8.99296019,17.9859204 C13.9599485,17.9859204 17.9859204,13.9595691 17.9859204,8.99296019 C17.9859204,4.02635129 13.9597799,0 8.99296019,0 Z M7.34328337,13.6124684 L3.38349415,9.65284778 L4.70331148,8.33303044 L7.34328337,10.9728337 L13.2826089,5.03333958 L14.6024262,6.35315691 L7.34328337,13.6124684 Z" id="Shape" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

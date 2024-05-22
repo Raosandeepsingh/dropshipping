@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>icon/action/delete copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-Coupons-approved-list" transform="translate(-1154.000000, -519.000000)">
+            <g id="down-arrow" transform="translate(1058.000000, 382.000000)">
+                <g id="icon/action/history" transform="translate(96.000000, 137.000000)">
+                    <rect id="Rectangle-Copy-9" x="0" y="0" width="12" height="12"></rect>
+                    <path d="M6.3,2.13162821e-14 C4.2,2.13162821e-14 2.34,1.14545455 1.38,2.8937799 L0,1.50717703 L0,5.42583732 L3.9,5.42583732 L2.22,3.73779904 C3,2.23062201 4.5,1.20574163 6.3,1.20574163 C8.76,1.20574163 10.8,3.25550239 10.8,5.72727273 C10.8,8.19904306 8.76,10.2488038 6.3,10.2488038 C4.32,10.2488038 2.7,8.98277512 2.04,7.23444976 L0.78,7.23444976 C1.44,9.64593301 3.66,11.4545455 6.3,11.4545455 C9.48,11.4545455 12,8.86220096 12,5.72727273 C12,2.5923445 9.42,2.13162821e-14 6.3,2.13162821e-14 Z M5.4,3.01435407 L5.4,6.08899522 L8.22,7.77703349 L8.7,6.99330144 L6.3,5.54641148 L6.3,3.01435407 L5.4,3.01435407 L5.4,3.01435407 Z" id="Shape" fill="#333333" fill-rule="nonzero" opacity="0.9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

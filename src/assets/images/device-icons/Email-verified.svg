@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="19px" viewBox="0 0 65 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Email-verified</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Change-the-tags,-it-should-be-like-this" transform="translate(-613.000000, -354.000000)">
+            <g id="Email-verified" transform="translate(613.000000, 354.000000)">
+                <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="0.5" y="0.5" width="64" height="18" rx="2"></rect>
+                <path d="M13.525,15 L10.9277778,12.4027778 L11.7833333,11.5472222 L13.525,13.2888889 L16.9777778,9.83611111 L17.8333333,10.6916667 L13.525,15 Z M11.1111111,8.27777778 L16,5.22222222 L6.22222222,5.22222222 L11.1111111,8.27777778 Z M11.1111111,9.5 L6.22222222,6.44444444 L6.22222222,12.5555556 L9.36944444,12.5555556 L10.5916667,13.7777778 L6.22222222,13.7777778 C5.88611111,13.7777778 5.59848148,13.6582037 5.35933333,13.4190556 C5.11977778,13.1795 5,12.8916667 5,12.5555556 L5,5.22222222 C5,4.88611111 5.11977778,4.59848148 5.35933333,4.35933333 C5.59848148,4.11977778 5.88611111,4 6.22222222,4 L16,4 C16.3361111,4 16.6239444,4.11977778 16.8635,4.35933333 C17.1026481,4.59848148 17.2222222,4.88611111 17.2222222,5.22222222 L17.2222222,7.88055556 L16,9.10277778 L16,6.44444444 L11.1111111,9.5 Z" id="Shape" fill="#6D7278" fill-rule="nonzero"></path>
+                <text id="Verified" font-family="Poppins-Regular, Poppins" font-size="10" font-weight="normal" fill="#979797">
+                    <tspan x="22.07" y="13">Verified</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

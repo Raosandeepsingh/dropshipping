@@ -1,0 +1,52 @@
+footer {
+    padding-top: 15px;
+    padding-right: 0;
+    padding-bottom: 15px;
+    padding-left: 0;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fcc303+0,fa3e06+99 */
+background: linear-gradient(to bottom, #fcc303 0%,#fa3e06 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    text-align: left;
+}
+.footer p {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 4px;
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-left: 0;
+}
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+footer ul li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-right: 1px #C4C4C4 solid;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+    padding-top: 0px;
+    padding-right: 12px;
+    padding-bottom: 0px;
+    padding-left: 12px;
+    line-height: 15px;
+}
+footer ul li a {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    display: block;
+    vertical-align: middle;
+}
+footer ul li:last-child {
+    border-right: 0px #C4C4C4 solid;
+}
